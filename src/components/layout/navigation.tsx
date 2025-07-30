@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArgonCard } from '@/components/ui/argon-card';
-import { MailOpen, Mail, Home, BarChart3, DollarSign } from 'lucide-react';
+import { MailOpen, Mail, Home, BarChart3, DollarSign, Building } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 export const Navigation: React.FC = () => {
@@ -37,6 +37,12 @@ export const Navigation: React.FC = () => {
       icon: DollarSign,
       label: 'Budget',
       description: 'Gestion financière'
+    },
+    {
+      href: '/treasury',
+      icon: Building,
+      label: 'Trésorerie',
+      description: 'Opérations bancaires et caisse'
     }
   ];
 
