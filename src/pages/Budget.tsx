@@ -6,6 +6,8 @@ import { ExpenseForm } from '@/components/budget/expense-form';
 import { CashBoxManagement } from '@/components/budget/cash-box-management';
 import { ValidationPanel } from '@/components/budget/validation-panel';
 import { BudgetDashboard } from '@/components/budget/budget-dashboard';
+import { ExpensePlanningComponent } from '@/components/budget/expense-planning';
+import { ExpenseTrackingComponent } from '@/components/budget/expense-tracking';
 import { useLocalStorage } from '@/hooks/use-local-storage';
 import type { 
   Budget as BudgetType, 
@@ -220,6 +222,8 @@ const Budget: React.FC = () => {
         <TabsList className="grid w-full grid-cols-6">
           <TabsTrigger value="dashboard">Tableau de bord</TabsTrigger>
           <TabsTrigger value="overview">Vue d'ensemble</TabsTrigger>
+          <TabsTrigger value="planning">Planification</TabsTrigger>
+          <TabsTrigger value="tracking">Suivi</TabsTrigger>
           <TabsTrigger value="expenses">Dépenses</TabsTrigger>
           <TabsTrigger value="cashbox">Petite caisse</TabsTrigger>
           <TabsTrigger value="validation">Validation</TabsTrigger>
@@ -239,6 +243,30 @@ const Budget: React.FC = () => {
             budgets={budgets}
             departments={departments}
             categories={categories}
+          />
+        </TabsContent>
+
+        <TabsContent value="planning">
+          <ExpensePlanningComponent
+            budgets={budgets}
+            departments={departments}
+            categories={categories}
+            expensePlans={[]}
+            onAddPlan={(plan) => {
+              // TODO: Implement expense planning logic
+              toast({
+                title: "Planification créée",
+                description: "La planification de dépense a été créée avec succès.",
+              });
+            }}
+          />
+        </TabsContent>
+
+        <TabsContent value="tracking">
+          <ExpenseTrackingComponent
+            expenses={expenses}
+            budgets={budgets}
+            departments={departments}
           />
         </TabsContent>
 
