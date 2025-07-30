@@ -4,7 +4,7 @@ import { Header } from '@/components/layout/header';
 import { ArgonCard, ArgonCardHeader, ArgonCardTitle, ArgonCardContent } from '@/components/ui/argon-card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { MailOpen, Mail, TrendingUp, Calendar, Users, FileText, ArrowRight } from 'lucide-react';
+import { MailOpen, Mail, TrendingUp, Calendar, Users, FileText, ArrowRight, DollarSign, PieChart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
@@ -72,33 +72,120 @@ const Index = () => {
           <div className="flex flex-col lg:flex-row items-center justify-between">
             <div className="text-center lg:text-left mb-6 lg:mb-0">
               <h1 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent mb-4">
-                Gestion de Courrier
+                Système de Gestion Intégré
               </h1>
               <p className="text-xl text-muted-foreground mb-2">
-                Système de gestion moderne avec design Argon UI
+                Gestion de courriers et budget avec design Argon UI
               </p>
               <div className="flex items-center justify-center lg:justify-start space-x-2 text-sm text-muted-foreground">
                 <Calendar className="h-4 w-4" />
                 <span>{todayDate}</span>
               </div>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <Link to="/incoming">
-                <Button className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-glow transition-all duration-300">
+                <Button className="bg-gradient-to-r from-primary to-primary-glow hover:shadow-glow transition-all duration-300 w-full">
                   <MailOpen className="h-4 w-4 mr-2" />
-                  Courriers Arrivés
+                  Courriers
+                </Button>
+              </Link>
+              <Link to="/budget">
+                <Button className="bg-gradient-to-r from-purple-500 to-purple-600 hover:shadow-glow transition-all duration-300 w-full">
+                  <DollarSign className="h-4 w-4 mr-2" />
+                  Budget
                 </Button>
               </Link>
               <Link to="/outgoing">
-                <Button variant="outline" className="hover:bg-accent/20 transition-all duration-200">
+                <Button variant="outline" className="hover:bg-accent/20 transition-all duration-200 w-full">
                   <Mail className="h-4 w-4 mr-2" />
-                  Courriers Départ
+                  Envois
+                </Button>
+              </Link>
+              <Link to="/stats">
+                <Button variant="outline" className="hover:bg-accent/20 transition-all duration-200 w-full">
+                  <PieChart className="h-4 w-4 mr-2" />
+                  Analyses
                 </Button>
               </Link>
             </div>
           </div>
         </ArgonCardContent>
       </ArgonCard>
+
+      {/* Modules principaux */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        {/* Module Courrier */}
+        <ArgonCard variant="gradient" className="hover:shadow-argon hover:-translate-y-1 transition-all duration-300">
+          <ArgonCardHeader>
+            <ArgonCardTitle className="flex items-center">
+              <MailOpen className="h-5 w-5 mr-2 text-primary" />
+              Gestion de Courrier
+            </ArgonCardTitle>
+          </ArgonCardHeader>
+          <ArgonCardContent>
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">1</div>
+                <div className="text-sm text-muted-foreground">Arrivés</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-purple-500">0</div>
+                <div className="text-sm text-muted-foreground">Départs</div>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <Link to="/incoming" className="flex-1">
+                <Button variant="outline" className="w-full">
+                  <MailOpen className="h-4 w-4 mr-2" />
+                  Arrivés
+                </Button>
+              </Link>
+              <Link to="/outgoing" className="flex-1">
+                <Button variant="outline" className="w-full">
+                  <Mail className="h-4 w-4 mr-2" />
+                  Départs
+                </Button>
+              </Link>
+            </div>
+          </ArgonCardContent>
+        </ArgonCard>
+
+        {/* Module Budget */}
+        <ArgonCard variant="gradient" className="hover:shadow-argon hover:-translate-y-1 transition-all duration-300">
+          <ArgonCardHeader>
+            <ArgonCardTitle className="flex items-center">
+              <DollarSign className="h-5 w-5 mr-2 text-purple-500" />
+              Gestion Budgétaire
+            </ArgonCardTitle>
+          </ArgonCardHeader>
+          <ArgonCardContent>
+            <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-purple-500">3</div>
+                <div className="text-sm text-muted-foreground">Budgets actifs</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-500">2</div>
+                <div className="text-sm text-muted-foreground">Caisses</div>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <Link to="/budget" className="flex-1">
+                <Button variant="outline" className="w-full">
+                  <DollarSign className="h-4 w-4 mr-2" />
+                  Budget
+                </Button>
+              </Link>
+              <Link to="/stats" className="flex-1">
+                <Button variant="outline" className="w-full">
+                  <PieChart className="h-4 w-4 mr-2" />
+                  Rapports
+                </Button>
+              </Link>
+            </div>
+          </ArgonCardContent>
+        </ArgonCard>
+      </div>
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -191,6 +278,16 @@ const Index = () => {
                   <div className="text-left">
                     <div className="font-medium">Nouveau Courrier Départ</div>
                     <div className="text-xs text-muted-foreground">Enregistrer un courrier sortant</div>
+                  </div>
+                </Button>
+              </Link>
+              
+              <Link to="/budget">
+                <Button variant="outline" className="w-full justify-start hover:bg-accent/20 transition-all duration-200">
+                  <DollarSign className="h-4 w-4 mr-3" />
+                  <div className="text-left">
+                    <div className="font-medium">Gestion Budget</div>
+                    <div className="text-xs text-muted-foreground">Budgets et dépenses</div>
                   </div>
                 </Button>
               </Link>
