@@ -9,6 +9,7 @@ import OutgoingMail from "./pages/OutgoingMail";
 import Stats from "./pages/Stats";
 import Budget from "./pages/Budget";
 import Treasury from "./pages/Treasury";
+import Forms from "./pages/Forms";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/stats" element={<Stats />} />
           <Route path="/budget" element={<Budget />} />
           <Route path="/treasury" element={<Treasury />} />
+          <Route path="/forms" element={<Forms />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
