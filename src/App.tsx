@@ -10,6 +10,10 @@ import Stats from "./pages/Stats";
 import Budget from "./pages/Budget";
 import Treasury from "./pages/Treasury";
 import Forms from "./pages/Forms";
+import HR from "./pages/HR";
+import Inventory from "./pages/Inventory";
+import CRM from "./pages/CRM";
+import Contracts from "./pages/Contracts";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +32,10 @@ const App = () => (
           <Route path="/budget" element={<Budget />} />
           <Route path="/treasury" element={<Treasury />} />
           <Route path="/forms" element={<Forms />} />
+          <Route path="/hr" element={<HR />} />
+          <Route path="/inventory" element={<Inventory />} />
+          <Route path="/crm" element={<CRM />} />
+          <Route path="/contracts" element={<Contracts />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

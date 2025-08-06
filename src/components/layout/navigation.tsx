@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArgonCard } from '@/components/ui/argon-card';
-import { MailOpen, Mail, Home, BarChart3, DollarSign, Building } from 'lucide-react';
+import { MailOpen, Mail, Home, BarChart3, DollarSign, Building, Users, Package, Target, Scroll, FileText } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 export const Navigation: React.FC = () => {
@@ -27,10 +27,34 @@ export const Navigation: React.FC = () => {
       description: 'Gestion des courriers sortants'
     },
     {
-      href: '/stats',
-      icon: BarChart3,
-      label: 'Statistiques',
-      description: 'Rapports et analyses'
+      href: '/hr',
+      icon: Users,
+      label: 'Ressources Humaines',
+      description: 'Gestion du personnel et de la paie'
+    },
+    {
+      href: '/inventory',
+      icon: Package,
+      label: 'Stocks',
+      description: 'Gestion des stocks et inventaire'
+    },
+    {
+      href: '/crm',
+      icon: Target,
+      label: 'Commercial (CRM)',
+      description: 'Clients et opportunités'
+    },
+    {
+      href: '/contracts',
+      icon: Scroll,
+      label: 'Contrats',
+      description: 'Gestion des contrats'
+    },
+    {
+      href: '/treasury',
+      icon: Building,
+      label: 'Trésorerie',
+      description: 'Opérations bancaires et caisse'
     },
     {
       href: '/budget',
@@ -39,10 +63,16 @@ export const Navigation: React.FC = () => {
       description: 'Gestion financière'
     },
     {
-      href: '/treasury',
-      icon: Building,
-      label: 'Trésorerie',
-      description: 'Opérations bancaires et caisse'
+      href: '/forms',
+      icon: FileText,
+      label: 'Formulaires',
+      description: 'Formulaires business'
+    },
+    {
+      href: '/stats',
+      icon: BarChart3,
+      label: 'Statistiques',
+      description: 'Rapports et analyses'
     }
   ];
 
